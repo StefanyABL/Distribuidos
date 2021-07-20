@@ -1,0 +1,65 @@
+--
+
+/*
+ * Script que se encarga de poblar la base de datos  
+ * 
+ */
+
+print("STARTING SCRIPT");
+conn = new Mongo("localhost");
+db = conn.getDB("crud-mongo");
+
+db.dropDatabase();
+
+
+db.createCollection("users");
+db.createCollection("tasks");
+
+
+print("***********creating users*********");
+
+
+user1 = {
+  	"name" : "sebastian",
+	"user" : "sebas",
+	"password" : "1234"
+}
+
+user2 = {
+	"name" : "andrea",
+	"user" : "andrea123",
+	"password" : "5678"
+}
+
+
+user3 = {
+  	"name" : "stefany",
+	"user" : "stefany",
+	"password" : "1234"
+	
+}
+
+
+print("***********creating courses*********");
+
+/* courses */
+
+
+task = {
+    	"numOne" : "5",
+	"numTwo" : "10",
+	"__v" : 0
+
+};
+
+print("***********saving users*********");
+db.users.save(user1);
+db.users.save(user2);
+db.users.save(user3);
+
+print("***********saving courses*********");
+db.tasks.save(task);
+
+print("SCRIPT FINISHED");
+
+--
